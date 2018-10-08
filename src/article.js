@@ -5,7 +5,8 @@ export default class Article extends Component {
         super(props)
 
         this.state = {
-            isOpen: true
+            isOpen: false,
+            isOpenComments: false
         }
     }
     render() {
@@ -25,13 +26,44 @@ export default class Article extends Component {
 
     getBody() {
         if (!this.state.isOpen) return null
+        const {isOpenComments} = this.state
+
         const {article} = this.props
-        return <section>{article.text}</section>
+        return (
+            <articleSection>
+                {article.text}
+                <div>
+                    <button onClick={this.toggleComments}>{isOpenComments ? "Hide" : "Show"} comments</button>
+                    {this.getComments(article)}
+                </div>
+            </articleSection>
+        )
     }
 
     toggleOpen = () => {
         this.setState({
             isOpen: !this.state.isOpen
         })
+    }
+
+    toggleComments = () => {
+        this.setState({
+            isOpenComments: !this.state.isOpenComments
+        })
+    }
+
+    getComments(article) {
+        if (!this.state.isOpenComments || article.comments === undefined) return null
+        const commentsElement = article.comments.map(comment => <div key={comment.id}>
+            <div>{comment.user}
+                <div>- {comment.text}</div>
+            </div>
+        </div>)
+
+        return (
+            <commentsSection>
+                {commentsElement}
+            </commentsSection>
+        )
     }
 }
