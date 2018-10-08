@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import CommentsList from "./CommentsList"
 
 export default class Article extends Component {
     constructor(props) {
@@ -19,7 +20,7 @@ export default class Article extends Component {
                 <button onClick = {this.toggleOpen}>
                     {isOpen ? '^' : 'Open'}
                 </button>
-                {this.getBody()}
+                <div>{this.getBody()}</div>
             </div>
         )
     }
@@ -33,7 +34,9 @@ export default class Article extends Component {
             <articleSection>
                 {article.text}
                 <div>
-                    <button onClick={this.toggleComments}>{isOpenComments ? "Hide" : "Show"} comments</button>
+                    <button onClick={this.toggleComments}>
+                        {isOpenComments ? "Hide" : "Show"} comments
+                    </button>
                     {this.getComments(article)}
                 </div>
             </articleSection>
@@ -54,16 +57,7 @@ export default class Article extends Component {
 
     getComments(article) {
         if (!this.state.isOpenComments || article.comments === undefined) return null
-        const commentsElement = article.comments.map(comment => <div key={comment.id}>
-            <div>{comment.user}
-                <div>- {comment.text}</div>
-            </div>
-        </div>)
 
-        return (
-            <commentsSection>
-                {commentsElement}
-            </commentsSection>
-        )
+        return <CommentsList comments={article.comments}/>
     }
 }
