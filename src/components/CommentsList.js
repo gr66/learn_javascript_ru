@@ -1,23 +1,17 @@
 import React, {Component} from "react"
+import toggleOpent from "../decorators/toggleOpen"
 import Comment from "./Comment"
 
-export default class CommentsList extends Component {
+class CommentsList extends Component {
     static defaultProps = {
         comments: []
     }
 
-    constructor(props) {
-        super(props)
-        this.state = {
-            isOpen: false
-        }
-    }
-
     render() {
-        const {isOpen} = this.state
+        const {isOpen, toggleOpen} = this.props
         return (
             <commentsSection>
-                <button onClick={this.toggleOpen}>
+                <button onClick={toggleOpen}>
                     {isOpen ? "Hide" : "Show"} comments
                 </button>
                 {this.getComments()}
@@ -25,15 +19,9 @@ export default class CommentsList extends Component {
         )
     }
 
-    toggleOpen = () => {
-        this.setState({
-            isOpen: !this.state.isOpen
-        })
-    }
-
     getComments() {
-        if (!this.state.isOpen) return null
-        const {comments} = this.props
+        const {comments, isOpen} = this.props
+        if (!isOpen) return null
         if (!comments.length) return <p>No comments yet</p>
         return (
             <ul>
@@ -41,5 +29,6 @@ export default class CommentsList extends Component {
             </ul>
         )
     }
-
 }
+
+export default toggleOpent(CommentsList)
