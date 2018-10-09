@@ -2,6 +2,10 @@ import React, {Component} from "react"
 import Comment from "./Comment"
 
 export default class CommentsList extends Component {
+    static defaultProps = {
+        comments: []
+    }
+
     constructor(props) {
         super(props)
         this.state = {
@@ -30,10 +34,10 @@ export default class CommentsList extends Component {
     getComments() {
         if (!this.state.isOpen) return null
         const {comments} = this.props
-        if (!comments || !comments.length) return "No comments yet"
+        if (!comments.length) return <p>No comments yet</p>
         return (
             <ul>
-                {comments.map(comment => <li key={comment.id}><Comment comment={comment} /></li>)}
+                {comments.map(comment => <li key={comment.id}><Comment comment={comment}/></li>)}
             </ul>
         )
     }
