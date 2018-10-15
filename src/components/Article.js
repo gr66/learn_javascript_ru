@@ -8,16 +8,26 @@ export default class Article extends Component {
             id: PropTypes.string.isRequired,
             title: PropTypes.string.isRequired,
             text: PropTypes.string
-        })
+        }),
+        isOpen: PropTypes.bool,
+        toggleAccordion: PropTypes.func.isRequired
+    }
+
+    componentWillReceivProps() {
+        console.log("----", "updateing", this.props.isOpen, nextProps.isOpen)
+    }
+
+    componentWillMount() {
+        console.log("---", "mounting")
     }
 
     render() {
-        const {article, isOpen, toggleOpen} = this.props
+        const {article, isOpen, toggleAccordion} = this.props
 
         return (
             <div>
                 <h3>{article.title}</h3>
-                <button onClick={toggleOpen}>
+                <button onClick={toggleAccordion}>
                     {isOpen ? '^' : 'Open'}
                 </button>
                 <div>{this.getBody()}</div>
