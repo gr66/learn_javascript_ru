@@ -14,14 +14,19 @@ export default class Article extends Component {
     }
 
     componentWillReceivProps() {
-        console.log("----", "updateing", this.props.isOpen, nextProps.isOpen)
+        // console.log("----", "updateing", this.props.isOpen, nextProps.isOpen)
     }
 
     componentWillMount() {
-        console.log("---", "mounting")
+        // console.log("---", "mounting")
+    }
+
+    shouldComponentUpdate(nextProps, nextState) {
+        return this.props.isOpen !== nextProps.isOpen
     }
 
     render() {
+        console.log("updateing article")
         const {article, isOpen, toggleAccordion} = this.props
 
         return (
