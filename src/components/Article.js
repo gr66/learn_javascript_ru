@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
 import PropTypes from "prop-types"
 import CommentsList from "./CommentsList"
+import {CSSTransitionGroup} from "react-transition-group"
+import "./article.css"
 
 export default class Article extends Component {
     static propTypes = {
@@ -32,10 +34,15 @@ export default class Article extends Component {
         return (
             <div>
                 <h3>{article.title}</h3>
-                <button onClick={toggleAccordion}>
+                <button onClick = {toggleAccordion}>
                     {isOpen ? '^' : 'Open'}
                 </button>
-                <div>{this.getBody()}</div>
+                <CSSTransitionGroup
+                    transitionName="article"
+                    transitionEnterTimeout={500}
+                    transitionLeaveTimeout={300}>
+                    {this.getBody()}
+                </CSSTransitionGroup>
             </div>
         )
     }
@@ -48,7 +55,7 @@ export default class Article extends Component {
             <articleSection>
                 {article.text}
                 <div>
-                    <CommentsList comments={article.comments}/>
+                    <CommentsList comments = {article.comments} />
                 </div>
             </articleSection>
         )
