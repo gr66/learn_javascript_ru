@@ -19,7 +19,6 @@ class UserForm extends Component {
             username: ev.target.value
         })
     }
-
 }
 
 export default UserForm;
