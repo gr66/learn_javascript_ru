@@ -7,8 +7,8 @@ export default Component => class Accordion extends React.Component {
 
     render() {
         return <Component {...this.props}
-                          openId={this.state.openId}
-                          toggleAccordion={this.toggleAccordion}
+                          openId = {this.state.openId}
+                          toggleAccordion = {this.toggleAccordion}
         />
     }
 

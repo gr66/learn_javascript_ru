@@ -12,18 +12,18 @@ class ArticleList extends Component {
 
     render() {
         const {articles, openId, toggleAccordion} = this.props
-        const articleElements = articles.map(article => <li key={article.id}>
+        const articleElements = articles.map(article => <li key = {article.id} >
             <Article
-                article={article}
-                isOpen={article.id === openId}
-                toggleAccordion={toggleAccordion(article.id)}
+                article = {article}
+                isOpen = {article.id === openId}
+                toggleAccordion = {toggleAccordion(article.id)}
             />
-        </li>)
+        </li >)
 
         return (
-            <ul>
+            <ul >
                 {articleElements}
-            </ul>
+            </ul >
         )
     }
 }

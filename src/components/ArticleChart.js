@@ -11,7 +11,7 @@ class ArticleChart extends Component {
 
     render() {
         return (
-            <div ref="chart"/>
+            <div ref = "chart" />
         );
     }
 
