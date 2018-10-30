@@ -3,6 +3,8 @@ import ArticleList from "./ArticleList"
 import ArticleChart from "./ArticleChart"
 import UserForm from "./UserForm"
 import Select from "react-select"
+import DayPickerForm from "./DayPickerForm"
+
 
 class App extends Component {
     state = {
@@ -16,19 +18,20 @@ class App extends Component {
         }))
 
         return (
-            <div >
+            <div>
                 <UserForm />
+                <DayPickerForm />
                 <Select options = {options}
                         value = {this.state.selection}
                         onChange = {this.changeSelection}
                         isMulti />
                 <ArticleList articles = {this.props.articles} />
                 <ArticleChart articles = {this.props.articles} />
-            </div >
+            </div>
         );
     }
 
     changeSelection = selection => this.setState({selection})
 }
 
-export default App;
+export default App
