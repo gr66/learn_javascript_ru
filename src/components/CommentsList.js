@@ -1,5 +1,6 @@
 import React, {Component} from "react"
 import toggleOpent from "../decorators/toggleOpen"
+import CommentForm from "./CommentForm"
 import Comment from "./Comment"
 
 class CommentsList extends Component {
@@ -11,7 +12,7 @@ class CommentsList extends Component {
         const {isOpen, toggleOpen} = this.props
         return (
             <commentsSection>
-                <button onClick={toggleOpen}>
+                <button onClick = {toggleOpen}>
                     {isOpen ? "Hide" : "Show"} comments
                 </button>
                 {this.getComments()}
@@ -24,9 +25,12 @@ class CommentsList extends Component {
         if (!isOpen) return null
         if (!comments.length) return <p>No comments yet</p>
         return (
-            <ul>
-                {comments.map(comment => <li key={comment.id}><Comment comment={comment}/></li>)}
-            </ul>
+            <div>
+                <ul>
+                    {comments.map(comment => <li key = {comment.id}><Comment comment = {comment} /></li>)}
+                </ul>
+                <CommentForm />
+            </div>
         )
     }
 }

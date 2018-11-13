@@ -16,7 +16,7 @@ export default class Article extends Component {
     }
 
     componentWillReceivProps() {
-        // console.log("----", "updateing", this.props.isOpen, nextProps.isOpen)
+        // console.log("----", "updating", this.props.isOpen, nextProps.isOpen)
     }
 
     componentWillMount() {
@@ -28,7 +28,7 @@ export default class Article extends Component {
     }
 
     render() {
-        console.log("updateing article")
+        // console.log("updating article")
         const {article, isOpen, toggleAccordion} = this.props
 
         return (
