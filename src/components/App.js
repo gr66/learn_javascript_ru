@@ -1,9 +1,9 @@
 import React, {Component} from "react";
-import ArticleList from "./ArticleList"
-import ArticleChart from "./ArticleChart"
+import ArticleList from "./Article/List"
+import ArticleChart from "./Article/Chart"
 import UserForm from "./UserForm"
 import Select from "react-select"
-import DayPickerForm from "./DayPickerForm"
+import DayPickerForm from "./Filters/DayPickerForm"
 
 
 class App extends Component {

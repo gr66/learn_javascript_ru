@@ -1,7 +1,7 @@
 import React, {Component} from "react"
 import PropsType from "prop-types"
-import Article from "./Article"
-import Accordion from "../decorators/toggleAccordion"
+import Article from "./index"
+import Accordion from "../../decorators/toggleAccordion"
 
 class ArticleList extends Component {
     static propTypes = {

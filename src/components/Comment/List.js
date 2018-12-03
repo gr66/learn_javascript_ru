@@ -1,7 +1,7 @@
 import React, {Component} from "react"
-import toggleOpent from "../decorators/toggleOpen"
-import CommentForm from "./CommentForm"
-import Comment from "./Comment"
+import toggleOpent from "../../decorators/toggleOpen"
+import CommentForm from "./Form"
+import Comment from "./Index"
 
 class CommentsList extends Component {
     static defaultProps = {
