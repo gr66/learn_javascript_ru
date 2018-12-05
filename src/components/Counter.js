@@ -22,7 +22,7 @@ class Counter extends Component {
     }
 
     handleIncrement = () => {
-        this.props.dispatch(increment())
+        this.props.increment()
     }
 }
 
@@ -31,7 +31,7 @@ function mapStateToProps(state) {
         count: state.count
     }
 }
-
-const decorator = connect(mapStateToProps)
+const mapToDispatch = { increment }
+const decorator = connect(mapStateToProps, mapToDispatch)
 
 export default decorator(Counter)
