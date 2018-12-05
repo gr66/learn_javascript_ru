@@ -7,27 +7,13 @@ import DayPickerForm from "./Filters/DayPickerForm"
 import Counter from './Counter'
 
 class App extends Component {
-    state = {
-        selection: null
-    }
-
     render() {
-        const options = this.props.articles.map(article => ({
-            label: article.title,
-            value: article.id
-        }))
-
         return (
             <div>
                 <Counter />
                 <UserForm />
                 <DayPickerForm />
-                <Select options = {options}
-                        value = {this.state.selection}
-                        onChange = {this.changeSelection}
-                        isMulti />
-                <ArticleList articles = {this.props.articles} />
-                <ArticleChart articles = {this.props.articles} />
+                <ArticleList />
             </div>
         );
     }

@@ -1,10 +1,12 @@
 import React, {Component} from 'react'
 import PropTypes from "prop-types"
+import {connect} from 'react-redux'
 import CommentsList from "../Comment/List"
 import {CSSTransitionGroup} from "react-transition-group"
+import {deleteArticle} from '../../AC'
 import "./style.css"
 
-export default class Article extends Component {
+class Article extends Component {
     static propTypes = {
         article: PropTypes.shape({
             id: PropTypes.string.isRequired,
@@ -37,6 +39,7 @@ export default class Article extends Component {
                 <button onClick = {toggleAccordion}>
                     {isOpen ? '^' : 'Open'}
                 </button>
+                <button onClick={this.handleDelete}>Delet</button>
                 <CSSTransitionGroup
                     transitionName="article"
                     transitionEnterTimeout={500}
@@ -45,6 +48,11 @@ export default class Article extends Component {
                 </CSSTransitionGroup>
             </div>
         )
+    }
+
+    handleDelete = () => {
+        const {deleteArticle, article} = this.props
+        deleteArticle(article.id)
     }
 
     getBody() {
@@ -61,3 +69,5 @@ export default class Article extends Component {
         )
     }
 }
+
+export default connect(null, { deleteArticle} )(Article)
