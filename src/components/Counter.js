@@ -14,7 +14,6 @@ class Counter extends Component {
     render() {
         return (
             <div>
-                {console.log(this.props.count)}
                 <h2>{this.props.count}</h2>
                 <button onClick = {this.handleIncrement}>Increment</button>
             </div>
@@ -22,7 +21,9 @@ class Counter extends Component {
     }
 
     handleIncrement = () => {
-        console.log('incrementing')
+        this.props.dispatch({
+            type: 'INCREMENT'
+        })
     }
 }
 
